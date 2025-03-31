@@ -1,4 +1,3 @@
-return
 getgenv().ConfigsKaitun = {
     ["Safe Mode"] = false, -- Will be pass all anti cheat (but slow farm)
     
