@@ -1,96 +1,980 @@
-getgenv().ConfigsKaitun = {
-    ["Safe Mode"] = false, -- Will be pass all anti cheat (but slow farm)
-    
-    ["Melee"] = {
-        ["Death Step"] = true,
-        ["Electric Claw"] = true,
-        ["Dragon Talon"] = true,
-        ["Sharkman Karate"] = true,
-        ["Superhuman"] = true,
-        ["God Human"] = true,
-    },
-
-    ["Sword"] = {
-        -- : World 1
-        ["Saber"] = true,
-        ["Pole"] = false,
-        -- : World 2
-        ["Midnight Blade"] = true,
-        ["Shisui"] = true,
-        ["Saddi"] = true,
-        ["Wando"] = true,
-        ["Rengoku"] = true,
-        ["True Triple Katana"] = true,
-        -- : World 3
-        ["Yama"] = true,
-        ["Tushita"] = true,
-        ["Canvander"] = true,
-        ["Buddy Sword"] = true,
-        ["Twin Hooks"] = true,
-        ["Hallow Scythe"] = true,
-        ["Cursed Dual Katana"] = true,
-    },
-
-    ["Gun"] = {
-        -- : World 2
-        ["Kabucha"] = true,
-        -- : World 3
-        ["Venom Bow"] = true,
-        ["Skull Guitar"] = true,
-    },
-
-    ["Mastery"] = {
-        ["Melee"] = true,
-        ["Sword"] = true,
-        ["Devil Fruits"] = true,
-
-        ["Configs"] = {
-            ["Selected All Sword"] = true,
-            ["Select Sword"] = {"Saber","Cursed Dual Katana"},
-        }
-    },
-
-    ["Race"] = {
-        ["v2"] = true,
-        ["v3"] = true,
-        ["Locked"] = {
-            ["Mink"] = true,
-            ["Human"] = true,
-            ["Skypiea"] = true,
-            ["Fishman"] = true,
-        },
-    },
-
-    ["Fruit"] = {
-        ["Main Fruit"] = {"Dough-Dough"},
-        ["Sec Fruit"] = {"Flame-Flame", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider", "Rumble-Rumble", "Magma-Magma", "Buddha-Buddha"},
-        ["Safe Fruit"] = {
-            "Dough-Dough",
-            "Dragon-Dragon"
-        },
-    },
-
-    ["Quest"] = {
-        ["Rainbow Haki"] = true,
-        ["Pull Lever"] = true,
-        ["Musketeer Hat"] = true,
-        ["Dough Mirror"] = true,
-        ["Shark Anchor"] = {
-            ["Enable"] = true,
-            ["Money"] = 25_000_000,
-        },
-    },
-
-    ["Currency"] = {
-        ["Lock Fragment"] = 30_000,
-    },
-
-    ["Performance"] = {
-        ["White Screen"] = false,
-        ["Booster FPS"] = false,
-        ["Lock FPS"] = 240,
-        ["AFK Timeout"] = 150,
-    },
-}
-
-loadstring(game:HttpGet("https://api.realaya.xyz/v1/files/l/73mkp0aqyfo4ypy8hvl0nz10lq49fey5.lua"))()
+if World3 then
+	v72:Button("Remove Fog", function()
+		game:GetService("Lighting").LightingLayers:Destroy();
+		game:GetService("Lighting").Sky:Destroy();
+	end);
+	local v817 = {
+		"Guardian",
+		"PirateGrandBrigade",
+		"MarineGrandBrigade",
+		"PirateBrigade",
+		"MarineBrigade",
+		"PirateSloop",
+		"MarineSloop",
+		"BeastHunter"
+	};
+	_G.SelectedBoat = "PirateGrandBrigade";
+	v72:Dropdown("Select Boat", v817, function(v1478)
+		_G.SelectedBoat = v1478;
+	end);
+	local v818 = {
+		"Zone 1",
+		"Zone 2",
+		"Zone 3",
+		"Zone 4",
+		"Zone 5",
+		"Zone 6"
+	};
+	_G.SelectedZone = "Zone 5";
+	v72:Dropdown("Select Zone", v818, function(v1479)
+		_G.SelectedZone = v1479;
+	end);
+	spawn(function()
+		pcall(function()
+			while wait() do
+				if (_G.SelectedZone == "Zone 1") then
+					CFrameSelectedZone = CFrame.new( -21998.375, 30.0006084, -682.309143, 0.120013528, 0.00690158736, 0.99274826, -0.0574118942, 0.998350561, -2.365092e-10, -0.991110802, -0.0569955558, 0.120211802);
+				elseif (_G.SelectedZone == "Zone 2") then
+					CFrameSelectedZone = CFrame.new( -26779.5215, 30.0005474, -822.858032, 0.307457417, 0.019647358, 0.951358974, -0.0637726262, 0.997964442, -4.1533402e-10, -0.949422479, -0.0606706589, 0.308084518);
+				elseif (_G.SelectedZone == "Zone 3") then
+					CFrameSelectedZone = CFrame.new( -31171.957, 30.0001011, -2256.93774, 0.37637493, 0.0150483791, 0.926345229, -0.0399504974, 0.999201655, 2.7089667e-11, -0.925605655, -0.0370079502, 0.376675636);
+				elseif (_G.SelectedZone == "Zone 4") then
+					CFrameSelectedZone = CFrame.new( -34054.6875, 30.2187767, -2560.12012, 0.0935864747, -0.00122954219, 0.995610416, 0.0624034069, 0.998040259, -0.00463332096, -0.993653536, 0.062563099, 0.0934797972);
+				elseif (_G.SelectedZone == "Zone 5") then
+					CFrameSelectedZone = CFrame.new( -38887.5547, 30.0004578, -2162.99023, -0.188895494, -0.00704088295, 0.981971979, -0.0372481011, 0.999306023, -1.3988234e-9, -0.981290519, -0.0365765914, -0.189026669);
+				elseif (_G.SelectedZone == "Zone 6") then
+					CFrameSelectedZone = CFrame.new( -44541.7617, 30.0003204, -1244.8584, -0.0844199061, -0.00553312758, 0.9964149, -0.0654025897, 0.997858942, 2.0231941e-10, -0.99428153, -0.0651681125, -0.0846010372);
+				end
+			end
+		end);
+	end);
+	getgenv().SpeedBoat = "300";
+	v72:Dropdown("Speed Tween Boat", {
+		"180",
+		"200",
+		"250",
+		"300",
+		"325",
+		"350"
+	}, function(v1480)
+		getgenv().SpeedBoat = v1480;
+	end);
+	v72:Toggle("Start Sea Event", _G.SailBoat, function(v1482)
+		_G.SailBoat = v1482;
+	end);
+	function CheckBoat()
+		for v1655, v1656 in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+			if (v1656.Name == _G.SelectedBoat) then
+				for v1895, v1896 in pairs(v1656:GetChildren()) do
+					if (v1896.Name == "MyBoatEsp") then
+						return v1656;
+					end
+				end
+			end
+		end
+		return false;
+	end
+	function CheckEnemiesBoat()
+		if (game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") or game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") or game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade")) then
+			return true;
+		end
+		return false;
+	end
+	function CheckShark()
+		for v1657, v1658 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+			if ((v1658.Name == "Shark") and v1658:FindFirstChild("Humanoid") and v1658:FindFirstChild("HumanoidRootPart") and (v1658.Humanoid.Health > 0)) then
+				if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
+					if ((v1658.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200) then
+						return true;
+					end
+				end
+			end
+		end
+		return false;
+	end
+	function CheckPiranha()
+		for v1659, v1660 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+			if ((v1660.Name == "Piranha") and v1660:FindFirstChild("Humanoid") and v1660:FindFirstChild("HumanoidRootPart") and (v1660.Humanoid.Health > 0)) then
+				if game:GetService("Workspace").Enemies:FindFirstChild("Piranha") then
+					if ((v1660.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200) then
+						return true;
+					end
+				end
+			end
+		end
+		return false;
+	end
+	function AddEsp(v1483, v1484)
+		local v1485 = Instance.new("BillboardGui");
+		local v1486 = Instance.new("TextLabel");
+		v1485.Parent = v1484;
+		v1485.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+		v1485.Active = true;
+		v1485.Name = v1483;
+		v1485.AlwaysOnTop = true;
+		v1485.LightInfluence = 1;
+		v1485.Size = UDim2.new(0, 200, 0, 50);
+		v1485.StudsOffset = Vector3.new(0, 2.5, 0);
+		v1486.Parent = v1485;
+		v1486.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+		v1486.BackgroundTransparency = 1;
+		v1486.Size = UDim2.new(1, 0, 1, 0);
+		v1486.Font = Enum.Font.GothamBold;
+		v1486.TextColor3 = Color3.fromRGB(255, 255, 255);
+		v1486.TextSize = 15;
+		v1486.Text = "Your Ship";
+	end
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if _G.SailBoat then
+					if  not CheckBoat() then
+						local v2321 = CFrame.new( -16927.451171875, 9.0863618850708, 433.8642883300781);
+						if ((v2321.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 1000) then
+							TP1(CFrame.new( -16224, 9, 439));
+						else
+							stoppos = TP2(v2321);
+						end
+						if ((CFrame.new( -16927.451171875, 9.0863618850708, 433.8642883300781).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10) then
+							if stoppos then
+								stoppos:Stop();
+							end
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat);
+							for v2627, v2628 in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+								if (v2628.Name == _G.SelectedBoat) then
+									if ((v2628.VehicleSeat.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100) then
+										AddEsp("MyBoatEsp", v2628);
+									end
+								end
+							end
+						end
+					else
+						for v2507, v2508 in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+							if (v2508.Name == _G.SelectedBoat) then
+								if v2508:FindFirstChild("MyBoatEsp") then
+									if  not game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit then
+										if ((CheckShark() and FarmShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.Terrorshark) or (CheckPiranha() and _G.farmpiranya) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.Fish_Crew_Member) or (game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") and _G.bjirFishBoat) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") and _G.RelzPirateBrigade) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") and _G.KillGhostShip) or (CheckSeaBeast() and _G.SeaBest)) then
+											if stoppos then
+												stoppos:Stop();
+											end
+										else
+											stoppos = TP2(v2508.VehicleSeat.CFrame * CFrame.new(0, 1, 0) );
+										end
+									else
+										repeat
+											wait();
+											stopboat = TPB(CFrameSelectedZone, v2508.VehicleSeat);
+										until (CheckShark() and FarmShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.Terrorshark) or (CheckPiranha() and _G.farmpiranya) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.Fish_Crew_Member) or (game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") and _G.bjirFishBoat) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") and _G.RelzPirateBrigade) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") and _G.KillGhostShip) or (CheckSeaBeast() and _G.SeaBest) or  not game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit or  not _G.SailBoat
+										if stopboat then
+											stopboat:Stop();
+										end
+										game:GetService("VirtualInputManager"):SendKeyEvent(true, 32, false, game);
+										wait(0.1);
+										game:GetService("VirtualInputManager"):SendKeyEvent(false, 32, false, game);
+									end
+								end
+							end
+						end
+					end
+				end
+			end);
+		end
+	end);
+	spawn(function()
+		pcall(function()
+			while wait() do
+				if _G.SailBoat then
+					if ((CheckShark() and FarmShark) or (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.Terrorshark) or (CheckPiranha() and _G.farmpiranya) or (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.Fish_Crew_Member) or (game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") and _G.bjirFishBoat) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") and _G.RelzPirateBrigade) or (game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") and _G.KillGhostShip) or (CheckSeaBeast() and _G.SeaBest)) then
+						if (game.Players.LocalPlayer.Character.Humanoid.Sit == true) then
+							game:GetService("VirtualInputManager"):SendKeyEvent(true, 32, false, game);
+							wait(0.1);
+							game:GetService("VirtualInputManager"):SendKeyEvent(false, 32, false, game);
+						end
+					end
+				end
+			end
+		end);
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if _G.SailBoat then
+					if (game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") and _G.Fish_Crew_Member) then
+						for v2509, v2510 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
+								if (v2510.Name == "Fish Crew Member") then
+									if (v2510:FindFirstChild("Humanoid") and v2510:FindFirstChild("HumanoidRootPart") and (v2510.Humanoid.Health > 0)) then
+										repeat
+											task.wait();
+											AutoHaki();
+											EquipWeapon(_G.SelectWeapon);
+											TP2(v2510.HumanoidRootPart.CFrame * Pos );
+											NeedAttacking = true;
+											_G.SeaSkill = false;
+										until  not _G.Fish_Crew_Member or  not v2510.Parent or (v2510.Humanoid.Health <= 0)
+										StartMagnet = false;
+									end
+								end
+							end
+						end
+					elseif (game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") and _G.bjirFishBoat) then
+						for v2629, v2630 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") then
+								repeat
+									task.wait();
+									local v2861 = v2630.Engine.CFrame;
+									if ((v2861.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50) then
+										_G.SeaSkill = true;
+									else
+										_G.SeaSkill = false;
+									end
+									TP2(v2861);
+									Skillaimbot = true;
+									AimSkill = v2630.Engine.CFrame * CFrame.new(0, -15, 0) ;
+									AimBotSkillPosition = AimSkill.Position;
+								until  not v2630.Parent or (v2630.Health < 0) or  not game:GetService("Workspace").Enemies:FindFirstChild("FishBoat") or  not v2630:FindFirstChild("Engine") or  not _G.bjirFishBoat
+								Skillaimbot = false;
+								_G.SeaSkill = false;
+							end
+						end
+					elseif (game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") and _G.KillGhostShip) then
+						for v2741, v2742 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") then
+								repeat
+									task.wait();
+									local v2946 = v2742.Engine.CFrame;
+									if ((v2946.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50) then
+										_G.SeaSkill = true;
+									else
+										_G.SeaSkill = false;
+									end
+									TP2(v2946);
+									Skillaimbot = true;
+									AimSkill = v2742.Engine.CFrame * CFrame.new(0, -15, 0) ;
+									AimBotSkillPosition = AimSkill.Position;
+								until  not v2742.Parent or (v2742.Health.Value < 0) or  not game:GetService("Workspace").Enemies:FindFirstChild("PirateGrandBrigade") or  not v2742:FindFirstChild("Engine") or  not _G.KillGhostShip
+								Skillaimbot = false;
+								_G.SeaSkill = false;
+							end
+						end
+					elseif (game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") and _G.RelzPirateBrigade) then
+						for v2900, v2901 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") then
+								repeat
+									task.wait();
+									local v2977 = v2901.Engine.CFrame;
+									if ((v2977.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50) then
+										_G.SeaSkill = true;
+									else
+										_G.SeaSkill = false;
+									end
+									TP2(v2977);
+									Skillaimbot = true;
+									AimSkill = v2901.Engine.CFrame * CFrame.new(0, -15, 0) ;
+									AimBotSkillPosition = AimSkill.Position;
+								until  not v2901.Parent or (v2901.Health.Value < 0) or  not game:GetService("Workspace").Enemies:FindFirstChild("PirateBrigade") or  not v2901:FindFirstChild("Engine") or  not _G.RelzPirateBrigade
+								Skillaimbot = false;
+								_G.SeaSkill = false;
+							end
+						end
+					elseif (CheckSeaBeast() and _G.SeaBest) then
+						if game:GetService("Workspace"):FindFirstChild("SeaBeasts") then
+							for v3012, v3013 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+								if CheckSeaBeast() then
+									repeat
+										wait();
+										CFrameSeaBeast = v3013.HumanoidRootPart.CFrame * CFrame.new(0, 200, 0) ;
+										if ((CFrameSeaBeast.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position).Magnitude <= 200) then
+											_G.SeaSkill = true;
+										else
+											_G.SeaSkill = false;
+										end
+										Skillaimbot = true;
+										AimBotSkillPosition = v3013.HumanoidRootPart.CFrame.Position;
+										TP2(CFrameSeaBeast * Pos );
+									until  not _G.SeaBest or (CheckSeaBeast() == false) or  not v3013:FindFirstChild("Humanoid") or  not v3013:FindFirstChild("HumanoidRootPart") or (v3013.Humanoid.Health < 0) or  not v3013.Parent
+									Skillaimbot = false;
+									_G.SeaSkill = false;
+								else
+									Skillaimbot = false;
+									_G.SeaSkill = false;
+								end
+							end
+						end
+					elseif (game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and _G.Terrorshark) then
+						for v3014, v3015 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") then
+								if (v3015.Name == "Terrorshark") then
+									if (v3015:FindFirstChild("Humanoid") and v3015:FindFirstChild("HumanoidRootPart") and (v3015.Humanoid.Health > 0)) then
+										repeat
+											task.wait(0.15);
+											AutoHaki();
+											EquipWeapon(_G.SelectWeapon);
+											NeedAttacking = true;
+											_G.SeaSkill = false;
+											TP2(v3015.HumanoidRootPart.CFrame * CFrame.new(0, 60, 0) );
+										until  not _G.Terrorshark or  not v3015.Parent or (v3015.Humanoid.Health <= 0)
+									end
+								end
+							end
+						end
+					elseif (CheckPiranha() and _G.farmpiranya) then
+						for v3044, v3045 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("Piranha") then
+								if (v3045.Name == "Piranha") then
+									if (v3045:FindFirstChild("Humanoid") and v3045:FindFirstChild("HumanoidRootPart") and (v3045.Humanoid.Health > 0)) then
+										repeat
+											task.wait();
+											AutoHaki();
+											EquipWeapon(_G.SelectWeapon);
+											TP2(v3045.HumanoidRootPart.CFrame * Pos );
+											NeedAttacking = true;
+											_G.SeaSkill = false;
+										until  not _G.farmpiranya or  not v3045.Parent or (v3045.Humanoid.Health <= 0)
+									end
+								end
+							end
+						end
+					elseif (CheckShark() and FarmShark) then
+						for v3058, v3059 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
+								if (v3059.Name == "Shark") then
+									if (v3059:FindFirstChild("Humanoid") and v3059:FindFirstChild("HumanoidRootPart") and (v3059.Humanoid.Health > 0)) then
+										repeat
+											task.wait();
+											AutoHaki();
+											EquipWeapon(_G.SelectWeapon);
+											TP2(v3059.HumanoidRootPart.CFrame * Pos );
+											NeedAttacking = true;
+											_G.SeaSkill = false;
+										until  not FarmShark or  not v3059.Parent or (v3059.Humanoid.Health <= 0)
+									end
+								end
+							end
+						end
+					else
+						Skillaimbot = false;
+						_G.SeaSkill = false;
+						UnEquipWeapon(_G.SelectWeapon);
+					end
+				end
+			end);
+		end
+	end);
+	v72:Toggle("Auto Kill Shark", FarmShark, function(v1505)
+		FarmShark = v1505;
+		StopTween(FarmShark);
+	end);
+	v72:Toggle("Auto Kill Piranha", _G.farmpiranya, function(v1506)
+		_G.farmpiranya = v1506;
+		StopTween(_G.farmpiranya);
+	end);
+	v72:Toggle("Auto Fish Crew", _G.Fish_Crew_Member, function(v1507)
+		_G.Fish_Crew_Member = v1507;
+		StopTween(_G.Fish_Crew_Member);
+	end);
+	function UpDownPos(v1508)
+		fastpos(v1508 * CFrame.new(0, 40, 0) );
+		wait(2);
+		fastpos(v1508 * CFrame.new(0, 300, 0) );
+		wait(3);
+	end
+	v72:Toggle("Auto Kill Ghost Ship", _G.bjirFishBoat, function(v1509)
+		_G.bjirFishBoat = v1509;
+		StopTween(_G.bjirFishBoat);
+		if  not _G.bjirFishBoat then
+			_G.SeaSkill = false;
+			Skillaimbot = false;
+			StopTween(_G.bjirFishBoat);
+		end
+	end);
+	v72:Toggle("Auto Kill Pirate Grand Brigade", _G.KillGhostShip, function(v1510)
+		_G.KillGhostShip = v1510;
+		StopTween(_G.KillGhostShip);
+	end);
+	v72:Toggle("Auto Kill Terror Shark", _G.Terrorshark, function(v1511)
+		_G.Terrorshark = v1511;
+		StopTween(_G.Terrorshark);
+	end);
+	v72:Toggle("Auto Kill Sea Beast", _G.SeaBest, function(v1512)
+		_G.SeaBest = v1512;
+		StopTween(_G.SeaBest);
+		if  not _G.SeaBest then
+			_G.SeaSkill = false;
+			Skillaimbot = false;
+		end
+	end);
+	function CheckSeaBeast()
+		if game:GetService("Workspace"):FindFirstChild("SeaBeasts") then
+			for v1831, v1832 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+				if (v1832:FindFirstChild("Humanoid") or v1832:FindFirstChild("HumanoidRootPart") or (v1832.Humanoid.Health < 0)) then
+					return true;
+				end
+			end
+		end
+		return false;
+	end
+	v72:Seperator("Setting Sea Event");
+	local v820 = {
+		"100",
+		"150",
+		"200",
+		"250",
+		"300",
+		"325",
+		"350"
+	};
+	v72:Dropdown("Select Brightness", v820, function(v1513)
+		BrightValue = v1513;
+	end);
+	v72:Button("Set Brightness", function()
+		game:GetService("Lighting").Brightness = BrightValue;
+	end);
+	v72:Toggle("Enable Speed Boat", _G.IncreaseBoatSpeed, function(v1515)
+		_G.IncreaseBoatSpeed = v1515;
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				local v1760 = {};
+				for v1833, v1834 in pairs(game.Workspace.Boats:GetDescendants()) do
+					if v1834:IsA("VehicleSeat") then
+						table.insert(v1760, v1834);
+					end
+				end
+				if _G.IncreaseBoatSpeed then
+					for v2109, v2110 in pairs(v1760) do
+						v2110.MaxSpeed = 350;
+					end
+				else
+					for v2112, v2113 in pairs(v1760) do
+						v2113.MaxSpeed = 150;
+					end
+				end
+			end);
+		end
+	end);
+	v72:Toggle("Enable Fly Boat", false, function(v1516)
+		if v1516 then
+			_G.NoClipRock = true;
+			v35(speaker, true);
+		else
+			_G.NoClipRock = false;
+			v34(speaker);
+		end
+	end);
+	v72:Toggle("NoClip Rock", _G.NoClipRock, function(v1517)
+		_G.NoClipRock = v1517;
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				for v1835, v1836 in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+					for v1897, v1898 in pairs(game:GetService("Workspace").Boats[v1836.Name]:GetDescendants()) do
+						if v1898:IsA("BasePart") then
+							if (_G.NoClipRock or _G.SailBoat) then
+								v1898.CanCollide = false;
+							else
+								v1898.CanCollide = true;
+							end
+						end
+					end
+				end
+			end);
+		end
+	end);
+	v72:Toggle("Press W Auto", _G.r71PressW, function(v1518)
+		_G.r71PressW = v1518;
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if _G.r71PressW then
+					if (game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true) then
+						game:GetService("VirtualInputManager"):SendKeyEvent(true, "W", false, game);
+					end
+				end
+			end);
+		end
+	end);
+	DoneSkillGun = false;
+	DoneSkillSword = false;
+	DoneSkillFruit = false;
+	DoneSkillMelee = false;
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if _G.SeaSkill then
+					if (_G.UseSeaFruitSkill and (DoneSkillFruit == false)) then
+						for v2511, v2512 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+							if v2512:IsA("Tool") then
+								if (v2512.ToolTip == "Blox Fruit") then
+									game.Players.LocalPlayer.Character.Humanoid:EquipTool(v2512);
+								end
+							end
+						end
+						if _G.SkillFruitZ then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+							wait(_G.SeaHoldSKillZ);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+						end
+						if _G.SkillFruitX then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+							wait(_G.SeaHoldSKillX);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+						end
+						if _G.SkillFruitC then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "C", false, game);
+							wait(_G.SeaHoldSKillC);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "C", false, game);
+						end
+						if _G.SkillFruitV then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game);
+							wait(_G.SeaHoldSKillV);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game);
+						end
+						if _G.SkillFruitF then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "F", false, game);
+							wait(_G.SeaHoldSKillF);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "F", false, game);
+						end
+						DoneSkillFruit = true;
+					end
+					if (_G.UseSeaMeleeSkill and (DoneSkillMelee == false)) then
+						for v2513, v2514 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+							if v2514:IsA("Tool") then
+								if (v2514.ToolTip == "Melee") then
+									game.Players.LocalPlayer.Character.Humanoid:EquipTool(v2514);
+								end
+							end
+						end
+						if _G.SkillMeleeZ then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+						end
+						if _G.SkillMeleeX then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+						end
+						if _G.SkillMeleeC then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "C", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "C", false, game);
+						end
+						if _G.SkillMeleeV then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game);
+						end
+						DoneSkillMelee = true;
+					end
+					if (_G.UseSeaSwordSkill and (DoneSkillSword == false)) then
+						for v2515, v2516 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+							if v2516:IsA("Tool") then
+								if (v2516.ToolTip == "Sword") then
+									game.Players.LocalPlayer.Character.Humanoid:EquipTool(v2516);
+								end
+							end
+						end
+						if _G.SkillSwordZ then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+						end
+						if _G.SkillSwordX then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+							wait(0);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+						end
+						DoneSkillSword = true;
+					end
+					if (_G.UseSeaGunSkill and (DoneSkillGun == false)) then
+						for v2517, v2518 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+							if v2518:IsA("Tool") then
+								if (v2518.ToolTip == "Gun") then
+									game.Players.LocalPlayer.Character.Humanoid:EquipTool(v2518);
+								end
+							end
+						end
+						if _G.SkillGunZ then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+							wait(0.1);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+						end
+						if _G.SkillGunX then
+							game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+							wait(0.1);
+							game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+						end
+						DoneSkillGun = true;
+					end
+					DoneSkillGun = false;
+					DoneSkillSword = false;
+					DoneSkillFruit = false;
+					DoneSkillMelee = false;
+				end
+			end);
+		end
+	end);
+	v72:Seperator("Kitsune Event");
+	v72:Toggle("Auto Kitsunen Island", _G.FKitsune, function(v1519)
+		_G.FKitsune = v1519;
+		StopTween(_G.FKitsune);
+	end);
+	spawn(function()
+		while wait() do
+			if _G.FrozenDimension then
+				pcall(function()
+					if game.Workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension") then
+						topos(game.Workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension").HumanoidRootPart.CFrame * CFrame.new(0, 500, -100) );
+					end
+				end);
+			end
+		end
+	end);
+	spawn(function()
+		while wait() do
+			if _G.FKitsune then
+				pcall(function()
+					if game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") then
+						topos(game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island").HumanoidRootPart.CFrame * CFrame.new(0, 100, 0) );
+					end
+				end);
+			end
+		end
+	end);
+	v72:Toggle("Teleporter Kitsune", false, function(v1520)
+		_G.tpkit = v1520;
+		StopTween(_G.tpkit);
+	end);
+	spawn(function()
+		local v1521;
+		while  not v1521 do
+			v1521 = game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland");
+			wait(1);
+		end
+		while wait() do
+			if _G.tpkit then
+				local v1837 = v1521:FindFirstChild("ShrineActive");
+				if v1837 then
+					for v2322, v2323 in pairs(v1837:GetDescendants()) do
+						if (v2323:IsA("BasePart") and v2323.Name:find("NeonShrinePart")) then
+							topos(v2323.CFrame);
+						end
+					end
+				end
+			end
+		end
+	end);
+	local v821 = false;
+	v72:Toggle("Auto Collect Azure Ember", false, function(v1522)
+		_G.CltAze = v1522;
+		StopTween(_G.CltAze);
+		if _G.CltAze then
+			spawn(function()
+				while _G.CltAze do
+					wait();
+					local v1899 = game:GetService("Workspace").EmberTemplate;
+					local v1900 = game.Players.LocalPlayer;
+					local v1901 = v1900.Character and v1900.Character:FindFirstChild("HumanoidRootPart") ;
+					if v1901 then
+						local v2324 = false;
+						while  not v2324 and v1901:IsDescendantOf(workspace)  do
+							for v2581, v2582 in pairs(v1899:GetDescendants()) do
+								if (v2582:IsA("BasePart") and (v2582.Name == "Part")) then
+									v2324 = true;
+									v1901.CFrame = v2582.CFrame;
+									break;
+								end
+							end
+							wait(0.1);
+						end
+					end
+				end
+			end);
+		end
+	end);
+	v72:Button("Trade Azure Ember", function()
+		game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/KitsuneStatuePray"):InvokeServer();
+	end);
+	v72:Seperator("Leviathan");
+	_G.SelectedBoatLevi = "PirateGrandBrigade";
+	v72:Dropdown("Select Boat Find Leviathan", v817, function(v1523)
+		_G.SelectedBoatLevi = v1523;
+	end);
+	getgenv().SpeedBoat = "300";
+	v72:Dropdown("Speed Boat Find Leviathan", {
+		"180",
+		"200",
+		"250",
+		"300",
+		"325",
+		"350"
+	}, function(v1524)
+		getgenv().SpeedBoat = v1524;
+	end);
+	v72:Toggle("Auto Find Leviathan (Need 5 People)", _G.AutoLeviathan, function(v1526)
+		_G.AutoLeviathan = v1526;
+		StopTween(_G.AutoLeviathan);
+	end);
+	spawn(function()
+		while wait() do
+			if _G.AutoLeviathan then
+				pcall(function()
+					local v1902 = game.Players.LocalPlayer;
+					local v1903 = v1902.Character:WaitForChild("Humanoid");
+					local v1904 = v1902.Character:WaitForChild("HumanoidRootPart");
+					if  not game:GetService("Workspace").Boats:FindFirstChild(_G.SelectedBoatLevi) then
+						topos(CFrame.new( -16927.451171875, 9.0863618850708, 433.8642883300781));
+						if ((CFrame.new( -16927.451171875, 9.0863618850708, 433.8642883300781).Position - v1904.Position).Magnitude <= 10) then
+							local v2583 = {
+								[1] = "BuyBoat",
+								[2] = _G.SelectedBoatLevi
+							};
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v2583));
+						end
+					else
+						local v2325 = game:GetService("Workspace").Boats:FindFirstChild(_G.SelectedBoatLevi);
+						if v2325 then
+							local v2584 = 0;
+							for v2631, v2632 in pairs(v2325:GetDescendants()) do
+								if (v2632:IsA("VehicleSeat") or v2632:IsA("Seat")) then
+									if v2632.Occupant then
+										v2584 = v2584 + 1 ;
+									end
+								end
+							end
+							if (v2584 >= 4) then
+								if  not v1903.Sit then
+									v1904.CFrame = v2325.VehicleSeat.CFrame;
+									wait(1);
+									v2325.VehicleSeat.BodyPosition.D = 5000;
+									v2325.VehicleSeat.BodyPosition.Position = Vector3.new(0, 200, 0);
+								else
+									TPB(v2325.VehicleSeat.CFrame * CFrame.new( -30, 0, -30) );
+									repeat
+										wait(0.1);
+										v2325.VehicleSeat.BodyPosition.D = 5000;
+										v2325.VehicleSeat.BodyPosition.Position = Vector3.new(0, 200, 0);
+										TPB(v2325.VehicleSeat.CFrame * CFrame.new( -30, 0, -30) );
+										if game:GetService("Workspace").Maps:FindFirstChild("Frozen Island") then
+											_G.AutoLeviathan = false;
+											break;
+										end
+									until (v1903.Health <= 0) or  not v2325:FindFirstChild("VehicleSeat")
+									v2325.VehicleSeat.BodyPosition.D = 300;
+									v2325.VehicleSeat.BodyPosition.Position = Vector3.new(0, 24, 0);
+									TPB(v2325.VehicleSeat.CFrame);
+								end
+							end
+						end
+					end
+				end);
+			end
+		end
+	end);
+	spawn(function()
+		while wait() do
+			if _G.AutoLeviathan then
+				pcall(function()
+					for v2115, v2116 in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+						for v2326, v2327 in pairs(game:GetService("Workspace").Boats[v2116.Name]:GetDescendants()) do
+							if v2327:IsA("BasePart") then
+								if (_G.NoClipRock or _G.AutoLeviathan) then
+									v2327.CanCollide = false;
+								else
+									v2327.CanCollide = true;
+								end
+							end
+						end
+					end
+				end);
+			end
+		end
+	end);
+	v72:Toggle("Auto Kill / Attack Leviathan", _G.KillLeviathan, function(v1527)
+		_G.KillLeviathan = v1527;
+		StopTween(_G.KillLeviathan);
+	end);
+	spawn(function()
+		while wait() do
+			if _G.KillLeviathan then
+				pcall(function()
+					for v2117, v2118 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+						if ((v2118.Name == "Leviathan") and v2118:FindFirstChild("HumanoidRootPart")) then
+							repeat
+								wait();
+								topos(v2118.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0) );
+								pcall(function()
+									Click();
+									AutoHaki();
+									_G.SeaSkill = true;
+								end);
+								_G.SeaSkill = true;
+								AimBotSkillPosition = v2118.HumanoidRootPart;
+								Skillaimbot = true;
+							until  not v2118:FindFirstChild("HumanoidRootPart") or  not _G.KillLeviathan
+							_G.SeaSkill = false;
+							Skillaimbot = false;
+						end
+					end
+				end);
+			end
+		end
+	end);
+	v72:Toggle("Tween Frozen Dimension", _G.FrozenDimension, function(v1528)
+		_G.FrozenDimension = v1528;
+		StopTween(_G.FrozenDimension);
+	end);
+	spawn(function()
+		while wait() do
+			if _G.FrozenDimension then
+				pcall(function()
+					if game.Workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension") then
+						topos(workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension").CFrame * CFrame.new(0, 250, 0) );
+					end
+				end);
+			end
+		end
+	end);
+	v72:Seperator("Settings Skills Only Sea Event");
+	v72:Toggle("Enable Melee Skill", _G.UseSeaMeleeSkill, function(v1529)
+		_G.UseSeaMeleeSkill = v1529;
+	end);
+	v72:Toggle("Enable Fruit Skill", _G.UseSeaFruitSkill, function(v1530)
+		_G.UseSeaFruitSkill = v1530;
+	end);
+	v72:Toggle("Enable Sword Skill", _G.UseSeaSwordSkill, function(v1531)
+		_G.UseSeaSwordSkill = v1531;
+	end);
+	v72:Toggle("Enable Gun Skill", _G.UseSeaGunSkill, function(v1532)
+		_G.UseSeaGunSkill = v1532;
+	end);
+	v72:Seperator("Settings Melee Skill");
+	v72:Toggle("Use Skill Z Melee", _G.UseSeaFruitSkill, function(v1533)
+		_G.SkillMeleeZ = v1533;
+	end);
+	v72:Toggle("Use Skill X Melee", _G.UseSeaSwordSkill, function(v1534)
+		_G.SkillMeleeX = v1534;
+	end);
+	v72:Toggle("Use Skill C Melee", _G.UseSeaGunSkill, function(v1535)
+		_G.SkillMeleeC = v1535;
+	end);
+	v72:Seperator("Settings Fruit Skill");
+	v72:Toggle("Use Skill Z Fruit", _G.UseSeaFruitSkill, function(v1536)
+		_G.SkillFruitZ = v1536;
+	end);
+	v72:Toggle("Use Skill X Fruit", _G.UseSeaFruitSkill, function(v1537)
+		_G.SkillFruitX = v1537;
+	end);
+	v72:Toggle("Use Skill C Fruit", _G.UseSeaFruitSkill, function(v1538)
+		_G.SkillFruitC = v1538;
+	end);
+	v72:Toggle("Use Skill V Fruit", _G.UseSeaFruitSkill, function(v1539)
+		_G.SkillFruitV = v1539;
+	end);
+	v72:Toggle("Use Skill F Fruit", _G.UseSeaFruitSkill, function(v1540)
+		_G.SkillFruitF = v1540;
+	end);
+	v72:Seperator("Settings Sword and Gun");
+	v72:Toggle("Use Skill Z | Sword And Gun", _G.UseSeaFruitSkill, function(v1541)
+		_G.SkillGunZ = v1541;
+		_G.SkillSwordZ = v1541;
+	end);
+	v72:Toggle("Use Skill X | Sword And Gun", _G.UseSeaFruitSkill, function(v1542)
+		_G.SkillGunX = v1542;
+		_G.SkillSwordX = v1542;
+	end);
+	function EquipAllWeapon()
+		pcall(function()
+			for v1761, v1762 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+				if (v1762:IsA("Tool") and  not ((v1762.Name == "Summon Sea Beast") or (v1762.Name == "Water Body") or (v1762.Name == "Awakening"))) then
+					local v1905 = game.Players.LocalPlayer.Backpack:FindFirstChild(v1762.Name);
+					game.Players.LocalPlayer.Character.Humanoid:EquipTool(v1905);
+					wait(1);
+				end
+			end
+		end);
+	end
+	local v822 = getrawmetatable(game);
+	local v823 = v822.__namecall;
+	setreadonly(v822, false);
+	v822.__namecall = newcclosure(function(...)
+		local v1543 = getnamecallmethod();
+		local v1544 = {
+			...
+		};
+		if (tostring(v1543) == "FireServer") then
+			if (tostring(v1544[1]) == "RemoteEvent") then
+				if ((tostring(v1544[2]) ~= "true") and (tostring(v1544[2]) ~= "false")) then
+					if Skillaimbot then
+						v1544[2] = AimBotSkillPosition;
+						return v823(unpack(v1544));
+					end
+				end
+			end
+		end
+		return v823(...);
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if UseSkill then
+					for v2119, v2120 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if ((v2120.Name == MonFarm) and v2120:FindFirstChild("Humanoid") and v2120:FindFirstChild("HumanoidRootPart") and (v2120.Humanoid.Health <= ((v2120.Humanoid.MaxHealth * _G.Kill_At) / 100))) then
+							if _G.SkillZ then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+								wait(_G.HoldSKillZ);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+							end
+							if _G.SkillX then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+								wait(_G.HoldSKillX);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+							end
+							if _G.SkillC then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "C", false, game);
+								wait(_G.HoldSKillC);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "C", false, game);
+							end
+							if _G.SkillV then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game);
+								wait(_G.HoldSKillV);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game);
+							end
+							if _G.SkillF then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "F", false, game);
+								wait(_G.HoldSKillF);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "F", false, game);
+							end
+						end
+					end
+				end
+			end);
+		end
+	end);
+	spawn(function()
+		while wait() do
+			pcall(function()
+				if UseGunSkill then
+					for v2121, v2122 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if ((v2122.Name == MonFarm) and v2122:FindFirstChild("Humanoid") and v2122:FindFirstChild("HumanoidRootPart") and (v2122.Humanoid.Health <= ((v2122.Humanoid.MaxHealth * _G.Kill_At) / 100))) then
+							if _G.SkillZ then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+								wait(0.5);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+							end
+							if _G.SkillX then
+								game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+								wait(0.5);
+								game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+							end
+						end
+					end
+				end
+			end);
+		end
+	end);
+end
